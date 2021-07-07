@@ -1,5 +1,7 @@
 const express = require("express")
 const http = require("http")
+const cors = require('cors')
+app.use(cors)
 const app = express()
 const server = http.createServer(app)
 const io = require("socket.io")(server,{
@@ -25,4 +27,4 @@ io.on('connection',(socket)=>{
     })
 })
 
-server.listen(5000, ()=> console.log('Server is up and running on port 5000'))
+server.listen(process.env.PORT || 5000, ()=> console.log('Server is up and running on port 5000'))
